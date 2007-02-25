@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for bit plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = bit
+
+include $(GPP_TOP)/win_gpp.mak
+

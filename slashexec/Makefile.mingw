@@ -1,0 +1,11 @@
+#
+# Makefile.mingw #
+# Description: Makefile for slashexec plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = slashexec
+
+include $(GPP_TOP)/win_gpp.mak
+
