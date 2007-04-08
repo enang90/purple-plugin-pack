@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for eight_ball plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = eight_ball
+
+include $(GPP_TOP)/win_gpp.mak
+
