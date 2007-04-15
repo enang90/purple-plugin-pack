@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for difftopic plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = difftopic
+
+include $(GPP_TOP)/win_gpp.mak
+

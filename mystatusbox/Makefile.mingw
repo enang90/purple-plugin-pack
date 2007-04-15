@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for my status box plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = mystatusbox
+
+include $(GPP_TOP)/win_gpp.mak
+
