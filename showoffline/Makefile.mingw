@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for showoffline plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = showoffline
+
+include $(GPP_TOP)/win_gpp.mak
+

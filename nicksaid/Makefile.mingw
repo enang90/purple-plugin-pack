@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for nicksaid plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = nicksaid
+
+include $(GPP_TOP)/win_gpp.mak
+

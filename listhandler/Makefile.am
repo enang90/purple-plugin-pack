@@ -1,0 +1,29 @@
+EXTRA_DIST = .build .purple-plugin *.h Makefile.mingw
+
+listhandlerdir = $(PURPLE_LIBDIR)
+
+listhandler_la_LDFLAGS = -module -avoid-version
+
+if HAVE_PURPLE
+
+listhandler_LTLIBRARIES = listhandler.la
+
+listhandler_la_SOURCES = \
+	aim_blt_files.c \
+	gen_xml_files.c \
+	lh_util.c \
+	migrate.c \
+	listhandler.c
+
+listhandler_la_LIBADD = \
+	$(GLIB_LIBS) \
+	$(PURPLE_LIBS)
+
+endif
+
+AM_CPPFLAGS = \
+	-DLIBDIR=\"$(PURPLE_LIBDIR)\" \
+	-DDATADIR=\"$(PURPLE_DATADIR)\" \
+	$(DEBUG_CFLAGS) \
+	$(PURPLE_CFLAGS)
+
