@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for bash plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = bash
+
+include $(GPP_TOP)/win_gpp.mak
+

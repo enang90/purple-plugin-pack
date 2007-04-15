@@ -1,0 +1,20 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for listhandler plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = listhandler
+
+
+GPP_SRC := \
+	aim_blt_files.c \
+	gen_xml_files.c \
+	lh_util.c \
+	listhandler.c \
+	migrate.c
+
+include $(GPP_TOP)/win_gpp.mak
+

@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for flip plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = flip
+
+include $(GPP_TOP)/win_gpp.mak
+

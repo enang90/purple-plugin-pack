@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for lastseen plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = lastseen
+
+include $(GPP_TOP)/win_gpp.mak
+
