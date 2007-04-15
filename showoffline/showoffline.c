@@ -84,11 +84,11 @@ static PurplePluginInfo info =
 
 	"core-plugin_pack-showoffline",					/**< id				*/
 	NULL,											/**< name			*/
-	VERSION,										/**< version		*/
+	PP_VERSION,										/**< version		*/
 	NULL,											/**  summary		*/
 	NULL,											/**  description	*/
 	"Stu Tomlinson <stu@nosnilmot.com>",			/**< author			*/
-	PP_WEBSITE,										/**< homepage		*/
+	PP_WEBSITE,									/**< homepage		*/
 
 	plugin_load,									/**< load			*/
 	NULL,											/**< unload			*/
