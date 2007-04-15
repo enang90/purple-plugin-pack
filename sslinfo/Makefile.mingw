@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for sslinfo plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = sslinfo
+
+include $(GPP_TOP)/win_gpp.mak
+

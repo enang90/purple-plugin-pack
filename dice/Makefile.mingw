@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for dice plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = dice
+
+include $(GPP_TOP)/win_gpp.mak
+

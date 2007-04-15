@@ -1,0 +1,12 @@
+#
+# Makefile.mingw
+#
+# Description: Makefile for oldlogger plugin.
+#
+
+GPP_TOP :=		..
+
+GPP = oldlogger
+
+include $(GPP_TOP)/win_gpp.mak
+
