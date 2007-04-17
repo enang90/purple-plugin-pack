@@ -1,24 +1,24 @@
 EXTRA_DIST = .purple-plugin .build Makefile.mingw
 
-showofflinedir = $(PURPLE_LIBDIR)
+autoreplydir = $(PURPLE_LIBDIR)
 
-showoffline_la_LDFLAGS = -module -avoid-version
+autoreply_la_LDFLAGS = -module -avoid-version
 
 if HAVE_PURPLE
 
-showoffline_LTLIBRARIES = showoffline.la
+autoreply_LTLIBRARIES = autoreply.la
 
-showoffline_la_SOURCES = \
-	showoffline.c
+autoreply_la_SOURCES = \
+	autoreply.c
 
-showoffline_la_LIBADD = \
+autoreply_la_LIBADD = \
 	$(GLIB_LIBS) \
 	$(PURPLE_LIBS)
 
 endif
 
 AM_CPPFLAGS = \
-	-DLIBDIR=\"$(PURPLE_LIBDIR)/libpurple/\" \
+	-DLIBDIR=\"$(PURPLE_LIBDIR)\" \
 	-DDATADIR=\"$(PURPLE_DATADIR)\" \
 	-DPIXMAPSDIR=\"$(PURPLE_PIXMAPSDIR)\" \
 	$(DEBUG_CFLAGS) \

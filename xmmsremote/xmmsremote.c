@@ -1,5 +1,5 @@
 /*
-  xmms-remote - Control xmms from gaim conversations
+  xmms-remote - Control xmms from Pidgin conversations
   Copyright (C) 2004 Gary Kramlich
 
   This program is free software; you can redistribute it and/or
@@ -938,7 +938,7 @@ gxr_get_config_frame(PurplePlugin *plugin) {
  ******************************************************************************/
 static gchar *
 gxr_file_name(const gchar *file_name) {
-	return g_build_filename(DATADIR, "pixmaps", "gaim", "plugin_pack",
+	return g_build_filename(PIXMAPSDIR, "plugin_pack",
 			"xmmsremote", file_name, NULL);
 }
 
