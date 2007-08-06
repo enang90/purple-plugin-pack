@@ -17,11 +17,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  * 02111-1307, USA.
  */
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
 
-#define PURPLE_PLUGINS
+#include "../common/pp_internal.h"
 
 #define PLUGIN_ID			"core-plugin_pack-autorejoin"
 #define PLUGIN_NAME			"Autorejoin (IRC)"
@@ -31,17 +28,12 @@
 #define PLUGIN_AUTHOR		"Sadrul H Chowdhury <sadrul@users.sourceforge.net>"
 
 /* System headers */
-#include <glib.h>
 #include <string.h>
 
 /* Purple headers */
 #include <cmds.h>
 #include <plugin.h>
 #include <prpl.h>
-#include <version.h>
-
-/* Pack/Local headers */
-#include "../common/pp_internal.h"
 
 static gboolean
 show_them(gpointer data)

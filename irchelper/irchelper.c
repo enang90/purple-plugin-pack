@@ -23,13 +23,9 @@
  * 02111-1307, USA.
  */
 
-#include <glib.h>
+#include "../common/pp_internal.h"
 
 #include <string.h>
-
-#ifndef PURPLE_PLUGINS
-#define PURPLE_PLUGINS
-#endif
 
 #include <account.h>
 #include <accountopt.h>
@@ -42,9 +38,6 @@
 #include <pluginpref.h>
 #include <prefs.h>
 #include <util.h>
-#include <version.h>
-
-#include "../common/pp_internal.h"
 
 #define PLUGIN_STATIC_NAME "irchelper"
 #define PLUGIN_ID "core-rlaager-" PLUGIN_STATIC_NAME

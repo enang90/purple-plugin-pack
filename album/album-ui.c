@@ -23,8 +23,6 @@
 
 #include "album-ui.h"
 
-#include <glib.h>
-
 /* We want to use the gstdio functions when possible so that non-ASCII
  * filenames are handled properly on Windows. */
 #if GLIB_CHECK_VERSION(2,6,0)
@@ -48,7 +46,6 @@
 #include <plugin.h>
 #include <request.h>
 #include <util.h>
-#include <version.h>
 
 /* XXX: For DATADIR... There must be a better way. */
 #ifdef _WIN32

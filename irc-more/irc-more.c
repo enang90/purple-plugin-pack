@@ -18,22 +18,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
-
-#define PURPLE_PLUGINS
+/* Pack/Local headers */
+#include "../common/pp_internal.h"
 
 #include <cmds.h>
 #include <plugin.h>
 #include <accountopt.h>
 #include <conversation.h>
-#include <version.h>
 
 #include <string.h>
-
-/* Pack/Local headers */
-#include "../common/pp_internal.h"
 
 #define CTCP_REPLY    purple_account_get_string(account, "ctcp-message", "Purple IRC")
 #define PART_MESSAGE  purple_account_get_string(account, "part-message", "Leaving.")

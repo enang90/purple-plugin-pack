@@ -17,11 +17,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  * 02111-1307, USA.
  */
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
 
-#define PURPLE_PLUGINS
+#include "../common/pp_internal.h"
 
 #define PLUGIN_ID			"gtk-plugin_pack-mystatusbox"
 #define PLUGIN_NAME			"Mystatusbox (Show Statusboxes)"
@@ -36,11 +33,7 @@
 
 /* System headers */
 #include <gdk/gdk.h>
-#include <glib.h>
 #include <gtk/gtk.h>
-
-/* Purple headers */
-#include <version.h>
 
 #if PURPLE_VERSION_CHECK(2,0,0) /* Stu is a chicken */
 
@@ -50,9 +43,6 @@
 #include <gtkmenutray.h>
 #include <gtkplugin.h>
 #include <gtkstatusbox.h>
-
-/* Pack/Local headers */
-#include "../common/pp_internal.h"
 
 /* XXX: THIS NEEDS CHANGED WHEN PIDGIN DOES ITS PREFS MIGRATION!!!!! */
 #define PREF_PREFIX "/plugins/gtk/" PLUGIN_ID

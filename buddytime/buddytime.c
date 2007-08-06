@@ -17,13 +17,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
  * 02111-1307, USA.
  */
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
 
-#define PURPLE_PLUGINS
+#include "../common/pp_internal.h"
 
-#define PLUGIN_ID			"amc_grim-buddytime-gtk"
+#define PLUGIN_ID			"gtk-plugin_pack-buddytime"
 #define PLUGIN_NAME			"Buddy Time"
 #define PLUGIN_STATIC_NAME	"buddytime"
 #define PLUGIN_SUMMARY		"summary"
@@ -31,16 +28,12 @@
 #define PLUGIN_AUTHOR		"Gary Kramlich <grim@reaperworld.com>"
 
 #include <gdk/gdk.h>
-#include <glib.h>
 #include <gtk/gtk.h>
 
-#include <version.h>
 #include <blist.h>
 #include <gtkutils.h>
 #include <gtkplugin.h>
 #include <request.h>
-
-#include "../common/pp_internal.h"
 
 /******************************************************************************
  * Defines

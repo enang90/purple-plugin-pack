@@ -19,10 +19,7 @@
  * 02111-1307, USA.
  */
 
-/* pp_config.h provides necessary definitions that help us find/do stuff */
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
+#include "../common/pp_internal.h"
 
 #include <blist.h>
 #include <cmds.h>
@@ -31,7 +28,6 @@
 #include <gtkblist.h>
 #include <gtkconv.h>
 
-#include "../common/pp_internal.h"
 #include "layout.h"
 
 #define IRSSI_LAYOUT_SETTING	"irssi::layout"

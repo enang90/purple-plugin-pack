@@ -18,24 +18,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
-
-#define PURPLE_PLUGINS
-
-#include <plugin.h>
+/* Pack/Local headers */
+#include "../common/pp_internal.h"
 
 #include <account.h>
 #include <blist.h>
 #include <cmds.h>
 #include <conversation.h>
 #include <debug.h>
-#include <version.h>
-#include <string.h>
+#include <plugin.h>
 
-/* Pack/Local headers */
-#include "../common/pp_internal.h"
+#include <string.h>
 
 #define PREF_ROOT "/plugins/ignore"
 

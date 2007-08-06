@@ -21,29 +21,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
+#include "../common/pp_internal.h"
 
-#define PURPLE_PLUGINS
-
-#include "account.h"
-#include "accountopt.h"
-#include "blist.h"
-#include "conversation.h"
-#include "debug.h"
-#include "notify.h"
-#include "prpl.h"
-#include "proxy.h"
-#include "util.h"
-#include "version.h"
+#include <account.h>
+#include <accountopt.h>
+#include <blist.h>
+#include <conversation.h>
+#include <debug.h>
+#include <notify.h>
+#include <prpl.h>
+#include <proxy.h>
+#include <util.h>
 
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
-
-#include "../common/pp_internal.h"
 
 #define NAP_SERVER "64.124.41.187"
 #define NAP_PORT 8888

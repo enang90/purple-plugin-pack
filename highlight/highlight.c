@@ -18,11 +18,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-# include "../pp_config.h"
-#endif
-
-#define PURPLE_PLUGINS
+/* Pack/Local headers */
+#include "../common/pp_internal.h"
 
 #include <plugin.h>
 
@@ -33,12 +30,8 @@
 #include <debug.h>
 #include <notify.h>
 #include <util.h>
-#include <version.h>
 
 #include <string.h>
-
-/* Pack/Local headers */
-#include "../common/pp_internal.h"
 
 #define PREF_PREFIX "/plugins/core/highlight"
 #define PREF_WORDS PREF_PREFIX "/words"
