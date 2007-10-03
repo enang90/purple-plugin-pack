@@ -21,11 +21,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02111-1301, USA.
  */
 
-void lh_util_add_buddy(const gchar *group, PurpleGroup *purple_group,
-			const gchar *buddy, const gchar *alias, PurpleAccount *account,
-			const gchar *buddynotes, gint signed_on, gint signed_off,
-			gint lastseen, gint last_seen, const gchar *gf_theme,
-			const gchar *icon_file, gchar *lastsaid);
+#ifndef _LISTHANDLER_PURPLE_BLIST_XML_H
+#define _LISTHANDLER_PURPLE_BLIST_XML_H
 
-void lh_util_add_to_blist(GList *buddies, GList *groups);
+void lh_pbx_import_action_cb(PurplePluginAction *action);
 
+#endif /* _LISTHANDLER_PURPLE_BLIST_XML_H*/

@@ -3,10 +3,12 @@ EXTRA_DIST=\
 	.purple-plugin \
 	Makefile.mingw \
 	aim_blt_files.h \
+	alias_xml_files.h \
 	gen_xml_files.h \
 	lh_util.h \
 	listhandler.h \
-	migrate.h
+	migrate.h \
+	purple_blist_xml.h
 
 listhandlerdir = $(PURPLE_LIBDIR)
 
@@ -18,10 +20,12 @@ listhandler_LTLIBRARIES = listhandler.la
 
 listhandler_la_SOURCES = \
 	aim_blt_files.c \
+	alias_xml_files.c \
 	gen_xml_files.c \
 	lh_util.c \
 	migrate.c \
-	listhandler.c
+	listhandler.c \
+	purple_blist_xml.c
 
 listhandler_la_LIBADD = \
 	$(GLIB_LIBS) \

@@ -18,7 +18,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02111-1301, USA.
  */
 
 /* XXX: Translations of strings - Several strings are NOT marked as needing to
@@ -44,7 +44,7 @@
 #include <util.h>
 
 #ifdef _WIN32
-/* Windows 2000 and earlier only allow 2047 bytes in an argv vector for cmd.exe
+/* Windows 2000 and earlier allow only 2047 bytes in an argv vector for cmd.exe
  * so we need to make sure we don't exceed that. 2036 allows "cmd.exe /c " to
  * fit inside the vector. */
 # define MAX_CMD_LEN 2036
@@ -55,6 +55,10 @@
  * begin with, or educated on the beauty of shell scripts. */
 # define MAX_CMD_LEN 8000
 #endif
+
+#define PREF_PREFIX		"/plugins/core/slashexec"
+#define PREF_SLASH		PREF_PREFIX "/slash"
+#define PREF_BANG		PREF_PREFIX "/bang"
 
 static PurpleCmdId se_cmd;
 static gchar *shell;
@@ -278,6 +282,9 @@ se_cmd_cb(PurpleConversation *conv, const gchar *cmd, gchar **args, gchar **erro
 	gboolean send = FALSE;
 	char *string = args[0];
 
+	if(!purple_prefs_get_bool(PREF_SLASH))
+		return PURPLE_CMD_RET_CONTINUE;
+
 	if(string && !strncmp(string, "-o ", 3)) {
 		send = TRUE;
 		string += 3;
@@ -292,14 +299,14 @@ se_cmd_cb(PurpleConversation *conv, const gchar *cmd, gchar **args, gchar **erro
 static void
 se_sending_msg_helper(PurpleConversation *conv, char **message)
 {
-	char *string = *message, *strip;
+	char *string = *message, *strip = NULL;
 	gboolean send = TRUE;
 
-	if(conv == NULL) return;
+	if(conv == NULL || !purple_prefs_get_bool(PREF_BANG)) return;
 
 	strip = purple_markup_strip_html(string);
 
-	if(*strip != '!') {
+	if(strip && *strip != '!') {
 		g_free(strip);
 		return;
 	}
@@ -355,6 +362,9 @@ static void
 se_sending_im_msg_cb(PurpleAccount *account, const char *who, char **message)
 {
 	PurpleConversation *conv;
+	if (message == NULL || *message == NULL)  /* It's possible if some other callback to
+												 to the signal resets the message */
+		return;
 	conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM, who, account);
 	se_sending_msg_helper(conv, message);
 }
@@ -407,6 +417,40 @@ se_unload(PurplePlugin *plugin) {
 	return TRUE;
 }
 
+static PurplePluginPrefFrame *
+get_plugin_pref_frame(PurplePlugin *plugin)
+{
+	PurplePluginPrefFrame *frame;
+	PurplePluginPref *pref;
+
+	frame = purple_plugin_pref_frame_new();
+
+	pref = purple_plugin_pref_new_with_label(_("Execute commands starting with: "));
+	purple_plugin_pref_frame_add(frame, pref);
+
+	pref = purple_plugin_pref_new_with_name_and_label(PREF_SLASH,
+					_("/exec Command (/exec some_command)"));
+	purple_plugin_pref_frame_add(frame, pref);
+
+	pref = purple_plugin_pref_new_with_name_and_label(PREF_BANG,
+					_("Exclamation point (!some_command)"));
+	purple_plugin_pref_frame_add(frame, pref);
+
+	return frame;
+}
+
+static PurplePluginUiInfo prefs_info = {
+	get_plugin_pref_frame,
+	0,
+	NULL,
+
+	/* padding */
+	NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
 static PurplePluginInfo se_info = {
 	PURPLE_PLUGIN_MAGIC,
 	PURPLE_MAJOR_VERSION,
@@ -433,8 +477,8 @@ static PurplePluginInfo se_info = {
 	NULL,												/* destroy			*/
 	NULL,												/* ui info			*/
 	NULL,												/* extra info		*/
+	&prefs_info,										/* prefs info		*/
 	NULL,												/* actions info		*/
-	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -453,6 +497,9 @@ init_plugin(PurplePlugin *plugin) {
 							" clients have.  Also included is the ability to"
 							" execute commands with an exclamation point"
 							" (!uptime, for instance).\n");
+	purple_prefs_add_none(PREF_PREFIX);
+	purple_prefs_add_bool(PREF_SLASH, TRUE);
+	purple_prefs_add_bool(PREF_BANG, FALSE);
 }
 
 PURPLE_INIT_PLUGIN(slashexec, init_plugin, se_info)
