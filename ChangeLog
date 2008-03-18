@@ -1,4 +1,4 @@
-Version 2.3.0mtn:
+Version 2.3.0: 03/17/08
 	* Fixed a typo in irc-more's source that allowed a potential double-free
 	* Fixed unregistering commands when unloading gRIM and Magic 8 ball plugin
 	* Fixed napster plugin.  It builds cleanly and loads properly now.
@@ -21,6 +21,7 @@ Version 2.3.0mtn:
 	  to the conversation window in 2.4.0.
 	* Fixed a missing header include in the timelog plugin which caused a
 	  plugin load failure under some circumstances.
+	* Finally added some content to README
 
 Version 2.2.0: 10/25/07
 	* Added 'menuconfig' script to make it easier to select what plugins to
