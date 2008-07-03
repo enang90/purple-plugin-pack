@@ -1,0 +1,58 @@
+EXTRA_DIST = \
+	AUTHORS \
+	COPYING \
+	ChangeLog \
+	INSTALL \
+	INSTALL.WIN32 \
+	intltool-extract.in \
+	intltool-merge.in \
+	intltool-update.in \
+	Makefile.am \
+	Makefile.mingw \
+	NEWS \
+	README \
+	VERSION \
+	VERSION.in \
+	plugin_list.sh \
+	plugin_pack.m4 \
+	plugin_pack.py \
+	plugin_pack.spec \
+	menuconfig \
+	win_pp.mak \
+	po/AUTHORS \
+	po/ChangeLog \
+	po/Makefile.in.in \
+	po/Makefile.mingw
+
+if INSTALL_I18N
+PO_DIR=po
+endif
+
+DIST_SUBDIRS = common doc po $(PP_DIST_DIRS)
+
+SUBDIRS = common doc $(PO_DIR) $(PP_BUILD_DIRS)
+
+DISTCLEANFILES=\
+	pp_config.h \
+	intltool-extract \
+	intltool-update \
+	intltool-merge
+
+BUILT_SOURCES = pp_config.h
+
+$(OBJECTS): $(BUILT_SOURCES)
+
+pp_config.h: pre_config.h
+	cp -f po/Makefile po/.tmp-Makefile
+	sed -e "s#localedir = .*#localedir = $(PURPLE_DATADIR)/locale#g" < po/.tmp-Makefile > po/Makefile
+	rm -f po/.tmp-Makefile
+	$(sedpath) 's/\#define PACKAGE/\#define PP_PACKAGE/g' pre_config.h > $@
+
+signatures: dist
+	echo $(DIST_ARCHIVES) | xargs -n 1 gpg -a -b
+
+info:
+	@echo $(PP_DIST_DIRS)
+
+stats:
+	@$(PYTHON) plugin_pack.py stats
