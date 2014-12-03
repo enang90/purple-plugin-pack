@@ -1023,7 +1023,7 @@ static gboolean receiving_im_msg_cb(PurpleAccount *account, gchar **sender,
 
 	/* Suppress voice mode change messages. */
 	if (g_str_has_prefix(msg, MESSAGE_VOICE_ADD) ||
-		g_str_has_prefix(msg, MESSAGE_VOICE_REMOVE))
+	    g_str_has_prefix(msg, MESSAGE_VOICE_REMOVE))
 	{
 		return TRUE
 	}
