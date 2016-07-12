@@ -33,6 +33,7 @@ Commands:
 """
 
 from __future__ import print_function
+
 import getopt
 import glob
 import os.path
@@ -123,7 +124,7 @@ class PluginPack:
                 # if the type is in list of types to load.
                 if types and not p.type in types:
                     continue
-                
+
                 # now we check if the give plugins depends match the search
                 # depends
                 if depends:
@@ -310,7 +311,7 @@ class PluginPack:
 
         print("{}".format(string.join(output, ',')))
     commands['build_dirs'] = build_dirs
-    
+
     def list_plugins(self, args):
         """Displays a list similiar to 'dpkg -l' about the plugin pack"""
 
@@ -456,7 +457,7 @@ class PluginPack:
         print(' Finch, and Purple.  You will find a summary of each plugin below.  For more')
         print(' about an individual plugin, please see {}\n .'.format(WEBPAGE))
         print(' Note: not all {} of these plugins are currently usable'.format(len(self.plugins)))
-        
+
         list = self.plugins.keys()
         list.sort()
         for key in list:
@@ -489,7 +490,7 @@ class PluginPack:
             if len(line) + len(name) + 2 > 75:
                 print(line.rstrip(','))
                 line = ' '
-            
+
             line += ' {},'.format(name)
 
         if len(line) > 1:
@@ -508,7 +509,7 @@ class PluginPack:
     def stats(self, args):
         """Displays stats about the plugin pack"""
         counts = {}
-        
+
         counts['total'] = len(self.plugins)
         counts['default'] = len(self.default_plugins())
         counts['incomplete'] = len(self.incomplete_plugins())
@@ -535,7 +536,7 @@ def show_usage(pp, exitcode):
 
     cmds = pp.commands.keys()
     cmds.sort()
-    
+
     for cmd in cmds:
         print("  {:<-20} {}".format(cmd, pp.commands[cmd].__doc__))
 
