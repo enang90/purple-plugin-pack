@@ -117,6 +117,8 @@
 #define MESSAGE_UNREAL_IRCD_PONG_CRUFT \
 	"*** If you are having problems connecting due to ping timeouts, " \
 	"please type /quote pong"
+#define MESSAGE_VOICE_ADD "mode (+v"
+#define MESSAGE_VOICE_REMOVE "mode(-v"
 
 /* Generic AuthServ, not currently used for any networks. */
 #define NICK_AUTHSERV "AuthServ"
@@ -1018,6 +1020,14 @@ static gboolean receiving_im_msg_cb(PurpleAccount *account, gchar **sender,
 	{
 		return TRUE;
 	}
+
+	/* Suppress voice mode change messages. */
+	if (g_str_has_prefix(msg, MESSAGE_VOICE_ADD) ||
+	    g_str_has_prefix(msg, MESSAGE_VOICE_REMOVE))
+	{
+		return TRUE
+	}
+
 
 	/* SLIGHTLY COMPLICATED SUPPRESSION RULES */
 
